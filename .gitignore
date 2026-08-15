@@ -1,0 +1,84 @@
+# Environment variables (secrets)
+.env
+.env.local
+.env.*.local
+.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+ENV/
+.venv/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+dist/
+.build/
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# LangGraph / LangSmith cache
+.langsmith-cache/
+
+# Database
+*.db
+*.sqlite3
+
+# Docker
+# docker-compose.override.yml  # optional, remove if needed
+
+# Claude / dev tooling
+.claude/
+.claude-flow/
+
+# Agent skills (internal tooling, not needed in repo)
+.agents/
+
+# Temporary files
+*.tmp
+*.temp

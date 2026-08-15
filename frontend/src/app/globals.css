@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Default Light Mode */
+  --bg-base: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-elevated: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-hover: #e2e8f0;
+
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-default: rgba(0, 0, 0, 0.12);
+  --border-strong: rgba(0, 0, 0, 0.2);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-disabled: #94a3b8;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 28px rgba(0,0,0,0.12);
+
+  /* Default Theme Accent: Indigo */
+  --accent-primary: #6366f1;
+  --accent-secondary: #4f46e5;
+  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --accent-glow: 0 0 25px rgba(99, 102, 241, 0.25);
+  --user-bubble: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%);
+}
+
+/* Dark Mode Overrides */
+.dark {
+  --bg-base: #090d16;
+  --bg-surface: #0f172a;
+  --bg-elevated: #1e293b;
+  --bg-card: #141e33;
+  --bg-hover: #1e293b;
+
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-default: rgba(255, 255, 255, 0.12);
+  --border-strong: rgba(255, 255, 255, 0.2);
+
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-disabled: #64748b;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.6);
+
+  --user-bubble: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
+
+/* Theme 1: Indigo Electric */
+[data-theme="indigo"] {
+  --accent-primary: #6366f1;
+  --accent-secondary: #8b5cf6;
+  --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --accent-glow: 0 0 25px rgba(99, 102, 241, 0.3);
+}
+
+/* Theme 2: Emerald Support */
+[data-theme="emerald"] {
+  --accent-primary: #10b981;
+  --accent-secondary: #059669;
+  --accent-gradient: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+  --accent-glow: 0 0 25px rgba(16, 185, 129, 0.3);
+}
+
+/* Theme 3: Sunset Warmth */
+[data-theme="sunset"] {
+  --accent-primary: #f43f5e;
+  --accent-secondary: #fb923c;
+  --accent-gradient: linear-gradient(135deg, #f43f5e 0%, #fb923c 100%);
+  --accent-glow: 0 0 25px rgba(244, 63, 94, 0.3);
+}
+
+/* Theme 4: Sapphire Corporate */
+[data-theme="sapphire"] {
+  --accent-primary: #0284c7;
+  --accent-secondary: #2563eb;
+  --accent-gradient: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  --accent-glow: 0 0 25px rgba(2, 132, 199, 0.3);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::selection {
+    background: var(--accent-primary);
+    color: #ffffff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border-default);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+  }
+}
+
+@layer components {
+  .theme-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-md);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .theme-card:hover {
+    border-color: var(--border-default);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .theme-surface {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .gradient-btn {
+    background: var(--accent-gradient);
+    color: #ffffff;
+    box-shadow: var(--accent-glow);
+    transition: all 0.2s ease;
+  }
+
+  .gradient-btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.1);
+  }
+
+  .gradient-btn:active {
+    transform: translateY(0);
+  }
+
+  .gradient-text-theme {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  @keyframes pulse-ring {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.15); opacity: 0.4; }
+    100% { transform: scale(0.95); opacity: 0.8; }
+  }
+
+  .pulse-ring {
+    animation: pulse-ring 2.5s ease-in-out infinite;
+  }
+}
