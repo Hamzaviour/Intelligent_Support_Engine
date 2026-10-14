@@ -23,11 +23,13 @@ class Settings(BaseSettings):
     redis_host: str = "localhost"
     redis_port: int = 6379
     redis_db: int = 0
+    redis_url: str = ""  # e.g. rediss://default:pw@host:6379 (Upstash); overrides host/port
 
     # Qdrant
     qdrant_host: str = "localhost"
     qdrant_port: int = 6333
     qdrant_api_key: str = ""
+    qdrant_url: str = ""  # e.g. https://xxx.cloud.qdrant.io:6333 (Qdrant Cloud); overrides host/port
 
     # MinIO
     minio_endpoint: str = "localhost:9000"

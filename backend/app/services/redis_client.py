@@ -17,12 +17,15 @@ class RedisService:
     async def connect(self):
         """Connect to Redis."""
         try:
-            self.redis = redis.Redis(
-                host=settings.redis_host,
-                port=settings.redis_port,
-                db=settings.redis_db,
-                decode_responses=True,
-            )
+            if settings.redis_url:
+                self.redis = redis.from_url(settings.redis_url, decode_responses=True)
+            else:
+                self.redis = redis.Redis(
+                    host=settings.redis_host,
+                    port=settings.redis_port,
+                    db=settings.redis_db,
+                    decode_responses=True,
+                )
             await self.redis.ping()
             logger.info("redis.connected", host=settings.redis_host, port=settings.redis_port)
         except Exception as e:

@@ -20,11 +20,15 @@ class QdrantService:
     async def connect(self):
         """Connect to Qdrant."""
         try:
-            self.client = QdrantClient(
-                host=settings.qdrant_host,
-                port=settings.qdrant_port,
-                api_key=settings.qdrant_api_key if settings.qdrant_api_key else None,
-            )
+            api_key = settings.qdrant_api_key or None
+            if settings.qdrant_url:
+                self.client = QdrantClient(url=settings.qdrant_url, api_key=api_key)
+            else:
+                self.client = QdrantClient(
+                    host=settings.qdrant_host,
+                    port=settings.qdrant_port,
+                    api_key=api_key,
+                )
 
             # Check if collection exists, create if not
             collections = self.client.get_collections().collections
